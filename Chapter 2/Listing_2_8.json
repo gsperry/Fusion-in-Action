@@ -1,0 +1,8 @@
+{
+  "id" : "arxiv",
+  "name" : "arxiv",
+  "properties" : {
+    "headerImageName" : "headerImage7",
+    "tileColor" : "apps-red"
+  }
+}

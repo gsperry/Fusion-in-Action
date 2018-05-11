@@ -1,0 +1,12 @@
+{
+  "id" : "arxiv-data",
+  "connector" : "lucid.fileupload",
+  "type" : "fileupload",
+  "pipeline" : "arxiv",
+  "parserId" : "arxiv",
+  "properties" : {
+    "mediaType" : "application/json",
+    "collection" : "arxiv",
+    "fileId" : "quickstart/arxiv-fusion.json"
+  }
+}
