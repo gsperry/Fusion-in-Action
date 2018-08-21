@@ -1,0 +1,10 @@
+{
+  "id" : "ebooks",
+  "name" : "ebooks",
+  "dataUri" : "/admin/App-Tile-10-460x160.png",
+  "properties" : {
+    "headerImageName" : "headerImage10",
+    "tileColor" : "apps-darkblue",
+    "previousCollectionId" : "ebooks"
+  }
+}

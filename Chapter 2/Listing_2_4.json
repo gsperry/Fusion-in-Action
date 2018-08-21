@@ -2,11 +2,11 @@
   "id" : "arxiv-data",
   "connector" : "lucid.fileupload",
   "type" : "fileupload",
-  "pipeline" : "arxiv",
-  "parserId" : "arxiv",
+  "pipeline" : "research-papers",
+  "parserId" : "research-papers",
   "properties" : {
     "mediaType" : "application/json",
-    "collection" : "arxiv",
+    "collection" : "research-papers",
     "fileId" : "quickstart/arxiv-fusion.json"
   }
 }

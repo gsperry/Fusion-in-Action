@@ -1,0 +1,11 @@
+curl -u admin:password1 -X POST -H 'Content-type: application/json' -d '{
+  "id" : "ebooks-local",
+  "type" : "lucidworks.fs",
+  "connector" : "lucidworks.fs",
+  "parserId" : "ebooks",
+  "properties" : {
+    "initialFilePaths" : [ "/home/master/Downloads/gutenberg" ],
+    "collection" : "ebooks"
+  },
+  "pipeline" : "ebooks"
+}' http://localhost:8764/api/connectors/datasources

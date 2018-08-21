@@ -1,0 +1,12 @@
+curl -u admin:password1 -X PUT -H "Content-Type: application/json" -d'{
+  "resource" : "datasource:All_Recipes-web",
+  "enabled" : true,
+  "triggers" : [ {
+    "type" : "interval",
+    "enabled" : true,
+    "interval" : 8,
+    "timeUnit" : "hour",
+    "startTime" : "2018-08-06T07:00:00.000Z"
+  } ],
+  "default" : true
+}' http://localhost:8764/api/jobs/datasource:All_Recipes-web/schedule

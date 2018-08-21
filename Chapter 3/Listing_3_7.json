@@ -1,0 +1,5 @@
+{
+  "subject" : "query-pipeline:ebooks-custom",
+  "object" : "app:ebooks",
+  "linkType" : "inContextOf"
+}

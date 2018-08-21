@@ -1,0 +1,1 @@
+curl -u admin:password1 -X GET "http://localhost:8764/api/apps/ebooks/query-pipelines/ebooks-custom/collections/ebooks/select?wt=xml&q=*:*&rows=0&echoParams=none&fq=Author_s:(%22Charles%20Dickens%22)"

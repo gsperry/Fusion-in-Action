@@ -1,0 +1,32 @@
+curl -u admin:password1 -X PUT -H 'Content-type: application/json' -d '{
+  "id" : "MovieLens",
+  "stages" : [ {
+    "type" : "indexing-rpc",
+    "mappingRules" : [ {
+      "path" : "/response/release_date",
+      "target" : "release_date",
+      "append" : false,
+      "xml" : false
+    } ],
+    "params" : {
+      "uri" : "https://api.themoviedb.org/3/movie/${tmdbId}",
+      "method" : "get",
+      "queryParams" : {
+        "api_key" : "<<replace with your API key>>"
+      }
+    }
+  }, {
+    "type" : "field-mapping",
+    "mappings" : [ ],
+    "reservedFieldsMappingAllowed" : false
+  }, {
+    "type" : "solr-dynamic-field-name-mapping",
+    "duplicateSingleValuedFields" : false,
+    "fieldsToExclude" : ["release_date"],
+    "advancedTextFieldsIndexing" : true,
+    "maxTextLengthForAdvancedIndexing" : 100
+  }, {
+    "type" : "solr-index",
+    "enforceSchema" : true,
+    "bufferDocsForSolr" : false
+  }]}' http://localhost:8764/api/index-pipelines/MovieLens

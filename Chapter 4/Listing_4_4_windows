@@ -1,0 +1,1 @@
+wget "https://www.apache.org/dyn/mirrors/mirrors.cgi?action=download&filename=/db/derby/db-derby-10.14.1.0/db-derby-10.14.2.0-bin.zip" -O derby.zip

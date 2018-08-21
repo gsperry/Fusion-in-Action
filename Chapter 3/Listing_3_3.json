@@ -1,0 +1,11 @@
+{
+  "id" : "ebooks-local",
+  "type" : "lucidworks.fs",
+  "connector" : "lucidworks.fs",
+  "parserId" : "ebooks",
+  "properties" : {
+    "initialFilePaths" : [ "/home/guy/Downloads/gutenberg/aleph.gutenberg.org" ],
+    "collection" : "ebooks"
+  },
+  "pipeline" : "ebooks"
+}

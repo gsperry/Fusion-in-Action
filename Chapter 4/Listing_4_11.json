@@ -1,0 +1,10 @@
+{
+  "id" : "MovieLens",
+  "name" : "MovieLens",
+  "dataUri" : "/admin/App-Tile-09-460x160.png",
+  "properties" : {
+    "headerImageName" : "headerImage9",
+    "tileColor" : "apps-teal",
+    "previousCollectionId" : "MovieLens"
+  }
+ }

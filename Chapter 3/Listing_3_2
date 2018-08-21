@@ -1,0 +1,9 @@
+curl -u admin:password1 -X POST -H 'Content-type: application/json' -d '{
+   "id" : "ebooks",
+   "name" : "ebooks",
+   "dataUri" : "/admin/App-Tile-10-460x160.png",
+   "properties" : {
+     "headerImageName" : "headerImage10",
+     "tileColor" : "apps-darkblue",
+     "previousCollectionId" : "ebooks"
+   }}' http://localhost:8764/api/apps

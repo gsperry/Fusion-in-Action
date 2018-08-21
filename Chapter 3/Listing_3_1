@@ -1,0 +1,1 @@
+wget -w 2 -r -erobots=off -l 2 -H "http://www.gutenberg.org/robot/harvest?filetypes[]=epub.images&langs[]=en"
