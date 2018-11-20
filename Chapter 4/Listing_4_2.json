@@ -1,0 +1,10 @@
+{
+  "id" : "All_Recipes",
+  "name" : "All Recipes",
+  "dataUri" : "/admin/App-Tile-01-460x160.png",
+  "properties" : {
+    "headerImageName" : "headerImage1",
+    "tileColor" : "apps-yellow",
+    "previousCollectionId" : "All_Recipes"
+  }
+}

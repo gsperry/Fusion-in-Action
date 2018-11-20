@@ -1,6 +1,1 @@
-curl -u admin:password1 -X POST -H 'Content-type:application/json' -d '{
-  "add-field":{
-     "name":"release_date",
-     "type":"pdate",
-     "stored":true }
-}' http://localhost:8764/api/solr/MovieLens/schema
+curl -u admin:password1 -X POST http://localhost:8764/api/connectors/jobs/movielens-jdbc

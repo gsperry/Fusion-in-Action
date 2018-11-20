@@ -1,9 +1,1 @@
-connect 'jdbc:derby://localhost:1527/movielens;create=true';
-create table movies(movieId int, title varchar(200), genres varchar(100));
-create table ratings(userId int, movieId int, rating decimal(2,1), timestamp bigint);
-create table links(movieId int, imdbId int, tmdbId int);
-CALL SYSCS_UTIL.SYSCS_IMPORT_TABLE_BULK ('APP','MOVIES','/home/guy/Downloads/ml-latest-small/movies.csv',null,null,null,0,1);
-CALL SYSCS_UTIL.SYSCS_IMPORT_TABLE_BULK ('APP','RATINGS','/home/guy/Downloads/ml-latest-small/ratings.csv',null,null,null,0,1);
-CALL SYSCS_UTIL.SYSCS_IMPORT_TABLE_BULK ('APP','LINKS','/home/guy/Downloads/ml-latest-small/links.csv',null,null,null,0,1);
-select count(*) from app.movies;
-exit;
+wget http://files.grouplens.org/datasets/movielens/ml-latest-small.zip

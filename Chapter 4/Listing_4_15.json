@@ -1,33 +1,17 @@
 {
-  "id" : "MovieLens",
-  "stages" : [ {
-    "type" : "indexing-rpc",
-    "mappingRules" : [ {
-      "path" : "/response/release_date",
-      "target" : "release_date",
-      "append" : false,
-      "xml" : false
-    } ],
-    "params" : {
-      "uri" : "https://api.themoviedb.org/3/movie/${tmdbId}",
-      "method" : "get",
-      "queryParams" : {
-        "api_key" : "<<replace with your API key>>"
-      }
-    }
-  }, {
-    "type" : "field-mapping",
-    "mappings" : [ ],
-    "reservedFieldsMappingAllowed" : false
-  }, {
-    "type" : "solr-dynamic-field-name-mapping",
-    "duplicateSingleValuedFields" : false,
-    "fieldsToExclude" : ["release_date"],
-    "advancedTextFieldsIndexing" : true,
-    "maxTextLengthForAdvancedIndexing" : 100
-  }, {
-    "type" : "solr-index",
-    "enforceSchema" : true,
-    "bufferDocsForSolr" : false
-  }]
+  "id" : "movielens-jdbc",
+  "connector" : "lucid.jdbc",
+  "type" : "jdbc",
+  "pipeline" : "MovieLens",
+  "properties" : {
+    "commit_on_finish" : true,
+    "collection" : "MovieLens",
+    "url" : "jdbc:derby://localhost:1527/movielens",
+    "username" : "app",
+    "password" : "app",
+    "driver" : "org.apache.derby.jdbc.ClientDriver",
+    "primary_key" : "movieId",
+    "sql_select_statement" : "SELECT movies.movieId AS \"id\", movies.movieId as \"movieId\", TITLE AS \"title\", GENRES AS \"genres\", 'https://www.imdb.com/title/tt00' || CAST(imdbId AS CHAR(10)) AS \"url\", tmdbId AS \"tmdbId\" FROM movies INNER JOIN links ON movies.movieId = links.movieId",
+    "nested_queries" : [ " SELECT userId as \"userId\", rating as \"rating\" FROM ratings WHERE CAST(ratings.movieId AS CHAR(7)) = $" ]
+  }
 }

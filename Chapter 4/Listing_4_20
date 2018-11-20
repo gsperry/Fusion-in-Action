@@ -1,45 +1,6 @@
-curl -u admin:password1 -X POST -H "Content-Type: application/json" -d'{
-  "id" : "All_Recipes-web",
- "connector" : "lucid.web",
-  "type" : "web",
-  "pipeline" : "All_Recipes",
-  "parserId" : "All_Recipes",
-  "properties" : {
-    "f.sitemapURLs" : [ "http://dish.allrecipes.com/faq-sitemap" ],
-    "restrictToTreeIgnoredHostPrefixes" : [ "www." ],
-    "fetchDelayMS" : 1000,
-    "refreshAll" : true,
-    "restrictToTreeAllowSubdomains" : true,
-    "collection" : "All_Recipes",
-    "f.quitTimeoutMs" : 5000,
-    "fetchDelayMSPerHost" : true,
-    "fetchThreads" : 2,
-    "f.requestRetryCount" : 0,
-    "initial_mapping" : {
-      "mappings" : [ {
-        "source" : "fetchedDate",
-        "operation" : "move",
-        "target" : "fetchedDate_dt"
-      }, {
-        "source" : "lastModified",
-        "operation" : "move",
-        "target" : "lastModified_dt"
-      }, {
-        "source" : "length",
-        "operation" : "move",
-        "target" : "length_l"
-      }],
-      "reservedFieldsMappingAllowed" : false,
-      "id" : "Anda",
-      "type" : "field-mapping"
-    },
-    "f.extraPageLoadDeltaChars" : 0,
-    "restrictToTreeUseHostAndPath" : false,
-    "sitemap_incremental_crawling" : false,
-    "f.screenshotFullscreen" : false,
-    "f.timeoutMS" : 10000,
-    "startLinks" : [ "https://www.allrecipes.com/recipes" ],
-    "depth" : 3,
-    "f.cookieSpec" : "browser-compatibility",
-    "f.takeScreenshot" : false
-  }}' http://localhost:8764/api/connectors/datasources
+curl -u admin:password1 -X PUT -H 'Content-type: application/json' -d '{
+  "id" : "MovieLens",
+  "queryPipeline" : "MovieLens-custom",
+  "collection" : "MovieLens",
+  "searchHandler" : "/select"
+}' http://localhost:8764/api/query-profiles/MovieLens

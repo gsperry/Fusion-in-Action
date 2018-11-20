@@ -1,10 +1,38 @@
 {
-  "id" : "All_Recipes",
-  "name" : "All Recipes",
-  "dataUri" : "/admin/App-Tile-01-460x160.png",
-  "properties" : {
-    "headerImageName" : "headerImage1",
-    "tileColor" : "apps-yellow",
-    "previousCollectionId" : "All_Recipes"
-  }
+  "id" : "MovieLens-custom",
+  "stages" : [ {
+    "type" : "set-params",
+    "params" : [ {
+      "key" : "facet",
+      "value" : "true",
+      "policy" : "append"
+    }, {
+      "key" : "facet.range",
+      "value" : "release_date",
+      "policy" : "append"
+    }, {
+      "key" : "f.release_date.facet.range.gap",
+      "value" : "+10YEARS",
+      "policy" : "append"
+    }, {
+      "key" : "f.release_date.facet.range.start",
+      "value" : "1950-01-01T00:00:00Z",
+      "policy" : "append"
+    }, {
+      "key" : "f.release_date.facet.range.end",
+      "value" : "NOW",
+      "policy" : "append"
+    } ],
+    "label" : "Range Facets"
+  }, {
+    "type" : "search-fields",
+    "rows" : 10,
+    "start" : 0,
+    "queryFields" : [ ],
+    "returnFields" : [ "*", "score" ]
+  }, {
+    "type" : "solr-query",
+    "httpMethod" : "POST",
+    "allowFederatedSearch" : false
+  }]
 }

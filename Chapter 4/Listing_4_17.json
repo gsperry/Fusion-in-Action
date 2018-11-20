@@ -1,38 +1,38 @@
 {
-  "id" : "MovieLens-custom",
+  "id" : "MovieLens",
   "stages" : [ {
-    "type" : "set-params",
-    "params" : [ {
-      "key" : "facet",
-      "value" : "true",
-      "policy" : "append"
+    "type" : "indexing-rpc",
+    "mappingRules" : [ {
+      "path" : "/response/release_date",
+      "target" : "release_date",
+      "append" : false,
+      "xml" : false
     }, {
-      "key" : "facet.range",
-      "value" : "release_date",
-      "policy" : "append"
-    }, {
-      "key" : "f.release_date.facet.range.gap",
-      "value" : "+10YEARS",
-      "policy" : "append"
-    }, {
-      "key" : "f.release_date.facet.range.start",
-      "value" : "1950-01-01T00:00:00Z",
-      "policy" : "append"
-    }, {
-      "key" : "f.release_date.facet.range.end",
-      "value" : "NOW",
-      "policy" : "append"
+      "path" : "/response/overview",
+      "target" : "overview",
+      "append" : false,
+      "xml" : false
     } ],
-    "label" : "Range Facets"
+    "params" : {
+      "uri" : "https://api.themoviedb.org/3/movie/${tmdbId}",
+      "method" : "get",
+      "queryParams" : {
+        "api_key" : "<<replace with your API key>>"
+      }
+    }
   }, {
-    "type" : "search-fields",
-    "rows" : 10,
-    "start" : 0,
-    "queryFields" : [ ],
-    "returnFields" : [ "*", "score" ]
+    "type" : "field-mapping",
+    "mappings" : [ ],
+    "reservedFieldsMappingAllowed" : false
   }, {
-    "type" : "solr-query",
-    "httpMethod" : "POST",
-    "allowFederatedSearch" : false
+    "type" : "solr-dynamic-field-name-mapping",
+    "duplicateSingleValuedFields" : false,
+    "fieldsToExclude" : ["release_date"],
+    "advancedTextFieldsIndexing" : true,
+    "maxTextLengthForAdvancedIndexing" : 100
+  }, {
+    "type" : "solr-index",
+    "enforceSchema" : true,
+    "bufferDocsForSolr" : false
   }]
 }
