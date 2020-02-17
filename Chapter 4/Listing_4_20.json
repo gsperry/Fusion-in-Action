@@ -1,6 +1,0 @@
-{
-  "id" : "MovieLens",
-  "queryPipeline" : "MovieLens-custom",
-  "collection" : "MovieLens",
-  "searchHandler" : "/select"
-}

@@ -1,0 +1,7 @@
+name: twigkit.search.fusion.Fusion
+
+timeOut: 30000
+resultIDField: id
+highlight: true
+defaultQuery: *:*
+workflow: processors.response.date-format,processors.query.date-range-query-processor,processors.response.date-range-response-processor

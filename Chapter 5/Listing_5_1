@@ -1,0 +1,1 @@
+curl -u admin:password1 -X GET -H "Accept: application/octet-stream" http://fusion-host:6764/api/collections/MovieLens/solr-config/solrconfig.xml -o "solrconfig.xml"

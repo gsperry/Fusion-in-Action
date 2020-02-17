@@ -1,0 +1,2 @@
+<!-- Search query based on the user's input -->
+<search:query var="query" parameters="*" results-per-page="12" facets="authors,categories"></search:query>

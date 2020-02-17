@@ -1,1 +1,1 @@
-java org.apache.derby.tools.sysinfo
+kubectl expose pod movielens-postgresql-0 --name postgres-5432 --type LoadBalancer --port 5432 --protocol TCP

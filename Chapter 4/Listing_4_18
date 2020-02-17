@@ -1,6 +1,37 @@
-curl -u admin:password1 -X POST -H 'Content-type:application/json' -d '{
-  "add-field":{
-     "name":"release_date",
-     "type":"pdate",
-     "stored":true }
-}' http://localhost:8764/api/solr/MovieLens/schema
+curl -u admin:password1 -X POST -H 'Expect:' -H 'Content-type: application/json' -d'{
+  "id" : "MovieLens-custom",
+  "stages" : [ {
+    "type" : "set-params",
+    "params" : [ {
+      "key" : "facet",
+      "value" : "true",
+      "policy" : "append"
+    }, {
+      "key" : "facet.range",
+      "value" : "release_date",
+      "policy" : "append"
+    }, {
+      "key" : "f.release_date.facet.range.gap",
+      "value" : "+10YEARS",
+      "policy" : "append"
+    }, {
+      "key" : "f.release_date.facet.range.start",
+      "value" : "1950-01-01T00:00:00Z",
+      "policy" : "append"
+    }, {
+      "key" : "f.release_date.facet.range.end",
+      "value" : "NOW",
+      "policy" : "append"
+    } ],
+    "label" : "Range Facets"
+  }, {
+    "type" : "search-fields",
+    "rows" : 10,
+    "start" : 0,
+    "queryFields" : [ ],
+    "returnFields" : [ "*", "score" ]
+  }, {
+    "type" : "solr-query",
+    "httpMethod" : "POST",
+    "allowFederatedSearch" : false
+}]}' http://fusion-host:6764/api/apps/MovieLens/query-pipelines

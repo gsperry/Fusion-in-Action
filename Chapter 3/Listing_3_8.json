@@ -1,6 +1,0 @@
-{
-  "id" : "ebooks",
-  "queryPipeline" : "ebooks-custom",
-  "collection" : "ebooks",
-  "searchHandler" : "/select"
-}

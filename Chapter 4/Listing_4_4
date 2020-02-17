@@ -6,7 +6,7 @@ curl -u admin:password1 -X PUT -H "Content-Type: application/json" -d'{
     "enabled" : true,
     "interval" : 8,
     "timeUnit" : "hour",
-    "startTime" : "2018-08-06T07:00:00.000Z"
+    "startTime" : "2019-03-22T07:00:00.000Z"
   } ],
   "default" : true
-}' http://localhost:8764/api/jobs/datasource:All_Recipes-web/schedule
+}' http://fusion-host:6764/api/apps/All_Recipes/jobs/datasource:All_Recipes-web/schedule

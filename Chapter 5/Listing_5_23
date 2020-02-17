@@ -1,0 +1,65 @@
+curl -u admin:password1 -X PUT -H "Content-type: application/json" -d '{
+  "id" : "MovieLens-custom",
+  "stages" : [ {
+    "type" : "landing-pages",
+    "queryParam" : "q",
+    "matchCount" : 1,
+    "rules" : [{
+      "keyword" : "heist",
+      "mode" : "match",
+      "url" : "Now You See Me 2"
+    }, {
+      "keyword" : "spy",
+      "mode" : "match",
+      "url" : "Jason Bourne"
+    }, {
+      "keyword" : "spy",
+      "mode" : "match",
+      "url" : "Spy Game"
+    }, {
+      "keyword" : "spy",
+      "mode" : "match",
+      "url" : "Bridge of Spies"
+    }]
+  }, {
+    "type" : "set-params",
+    "params" : [ {
+      "key" : "facet",
+      "value" : "true",
+      "policy" : "append"
+    }, {
+      "key" : "facet.range",
+      "value" : "release_date",
+      "policy" : "append"
+    }, {
+      "key" : "f.release_date.facet.range.gap",
+      "value" : "+10YEARS",
+      "policy" : "append"
+    }, {
+      "key" : "f.release_date.facet.range.start",
+      "value" : "1950-01-01T00:00:00Z",
+      "policy" : "append"
+    }, {
+      "key" : "f.release_date.facet.range.end",
+      "value" : "NOW",
+      "policy" : "append"
+    } ],
+    "label" : "Range Facets"
+  }, {
+    "type" : "search-fields",
+    "rows" : 10,
+    "start" : 0,
+    "queryFields" : [ ],
+    "returnFields" : [ "*", "score" ]
+  }, {
+    "type" : "solr-query",
+    "httpMethod" : "POST"
+  }, {
+    "type" : "javascript-query",
+    "script" : "// define functions\nfunction(request, response, ctx) {\n var getTmdbData = function (tmdbId) {\n // java imports\n  var e = java.lang.Exception;\n  var URL = java.net.URL;\n var BufferedReader = java.io.BufferedReader;\n  var InputStreamReader = java.io.InputStreamReader;\n  var String = java.lang.String;\n // local declarations\n  var result = new String(\"\");\n try {\n var address_url = \"https://api.themoviedb.org/3/movie/\" + tmdbId + \"?api_key=abcdefg123456789\";\n var targetUrl = new URL(address_url);\n var ins = new BufferedReader(new InputStreamReader(targetUrl.openStream()));\n var inputLine = \"\";\n while ((inputLine = ins.readLine()) !== null) {\n result += inputLine;\n }\n ins.close();\n var json = JSON.parse(result);\n // return info\n return json;\n } catch (e) {\n logger.error(e);\n  }\n\t};\n\tctx.put(\"getTmdbData\", getTmdbData);\n}\n", 
+    "label" : "TMDB REST"
+  }, {
+    "type" : "javascript-query",
+    "script" : "function (request, response, ctx) {\n // java imports\n var e = java.lang.Exception;\n\n //JS imports\n var getTmdbData = ctx.get(\"getTmdbData\");\n\n try {\n var returnDocs = response.getInnerResponse().getDocuments();\n  for each (var doc in returnDocs) {\n var tmdbId = doc.getField(\"tmdbId_s\");\n var tmdbData = getTmdbData(tmdbId);\n var smallPoster = \"http://image.tmdb.org/t/p/w92\" + tmdbData.poster_path;\n doc.putField(\"small_poster\", smallPoster);\n var largePoster = \"http://image.tmdb.org/t/p/w342\" + tmdbData.poster_path;\n doc.putField(\"large_poster\", largePoster);\n  }\n  response.getInnerResponse().updateDocuments(returnDocs);\n } catch (e) {\n  logger.error(e);\n }\n}\n", 
+    "label" : "Add Posters"
+  }]}' http://fusion-host:6764/api/apps/MovieLens/query-pipelines/MovieLens-custom

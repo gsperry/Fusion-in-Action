@@ -1,1 +1,8 @@
-curl -u admin:password1 -X GET http://localhost:8764/api/apollo/apps/ebooks/query-pipelines/ebooks-custom/collections/ebooks/select?wt=xml&q=*:*&rows=0&echoParams=none&fq=Author_s:(%22Shoghi%20Effendi%22)
+# Hostname of your Fusion server
+host: <your Fusion IP here>
+
+# Port of your Fusion server
+port: 6764
+
+# Protocol of your Fusion server - e.g. http or https
+protocol: http

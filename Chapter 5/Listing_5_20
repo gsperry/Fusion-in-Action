@@ -1,0 +1,4 @@
+<search:facet collapsible="true" facet-name="release_date" title="Date Range" collapsed-by-default="false">
+    <chart:histogram facet="$parent.facet" show-count="true" show="40" height="25px"></chart:histogram>
+    <widget:slider response="response" facet-name="release_date"></widget:slider>
+</search:facet>

@@ -1,0 +1,6 @@
+name: twigkit.search.processors.query.DynamicSolrDateRangeQueryProcessor
+fields: release_date=release_date
+max-data-points:36
+default-start-date: NOW/YEAR-60YEARS
+default-end-date: NOW/YEAR
+dynamicBuckets: true

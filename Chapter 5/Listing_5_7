@@ -1,0 +1,10 @@
+curl -u admin:password1 -X POST -H 'Content-type: application/json' -d '{
+  "id" : "MovieSuggest",
+  "queryPipeline" : "MovieLens-suggest",
+  "collection" : "MovieLens",
+  "searchHandler" : "suggest",
+  "params" : [ {
+    "key" : "wt",
+    "value" : "xml",
+    "policy" : "append"
+}]}' http://fusion-host:6764/api/apps/MovieLens/query-profiles

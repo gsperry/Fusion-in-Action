@@ -12,4 +12,4 @@ curl -u admin:password1 -X POST -H 'Content-type: application/json' -d '{
   }],
   "properties" : {
     "collection" : "ebooks"
-}}' http://localhost:8764/api/query-pipelines
+}}' http://fusion-host:6764/api/apps/ebooks/query-pipelines

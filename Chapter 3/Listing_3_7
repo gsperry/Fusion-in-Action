@@ -1,5 +1,6 @@
-curl -u admin:password1 -X PUT -H 'content-type: application/json' -d '{
-  "subject" : "query-pipeline:ebooks-custom",
-  "object" : "app:ebooks",
-  "linkType" : "inContextOf"
-}' http://localhost:8764/api/links
+curl -u admin:password1 -X PUT -H 'Content-type: application/json' -d '{
+  "id" : "ebooks",
+  "queryPipeline" : "ebooks-custom",
+  "collection" : "ebooks",
+  "searchHandler" : "/select"
+}' http://fusion-host:6764/api/apps/ebooks/query-profiles/ebooks

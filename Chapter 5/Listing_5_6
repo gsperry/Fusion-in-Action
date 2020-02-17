@@ -1,0 +1,1 @@
+curl -u admin:password1 -X GET http://fusion-host:6764/api/apps/MovieLens/query-pipelines/MovieLens-suggest/collections/MovieLens/suggest?suggest.q=brave

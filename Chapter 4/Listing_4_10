@@ -1,1 +1,2 @@
-wget http://files.grouplens.org/datasets/movielens/ml-latest-small.zip
+kubectl expose pod movielens-postgresql-0 --name postgres-5432 \
+--type LoadBalancer --port 5432 --protocol TCP

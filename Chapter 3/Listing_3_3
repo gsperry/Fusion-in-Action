@@ -1,11 +1,27 @@
 curl -u admin:password1 -X POST -H 'Content-type: application/json' -d '{
-  "id" : "ebooks-local",
-  "type" : "lucidworks.fs",
-  "connector" : "lucidworks.fs",
-  "parserId" : "ebooks",
+  "id" : "ebooks", 
+  "connector" : "lucid.s3", 
+  "type" : "s3",
+  "pipeline" : "ebooks", 
+  "parserId" : "ebooks", 
   "properties" : {
-    "initialFilePaths" : [ "/home/master/Downloads/gutenberg" ],
-    "collection" : "ebooks"
-  },
-  "pipeline" : "ebooks"
-}' http://localhost:8764/api/connectors/datasources
+    "collection" : "ebooks", 
+    "max_bytes" : 140000000, 
+    "url" : "s3://lw-training-artifacts/fusion-in-action/", 
+    "initial_mapping" : {
+      "mappings" : [ {
+        "source" : "fetch_time",
+        "operation" : "move",
+        "target" : "fetch_time_dt"
+      }, {
+        "source" : "ds:description",
+        "operation" : "move",
+        "target" : "description"
+      } ],
+      "reservedFieldsMappingAllowed" : false,
+      "id" : "FromMap"
+    },
+    "password" : "9BwT2ZXV4WQ/wAJpfbgODP2bNO9KoiesyAk/l0w/", 
+    "bounds" : "tree",
+    "username" : " AKIAU2CD4JY2FADEZUEK " 
+  }}' http://fusion-host:6764/api/apps/ebooks/connectors/datasources

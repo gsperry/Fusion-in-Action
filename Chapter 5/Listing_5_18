@@ -1,0 +1,4 @@
+name: twigkit.search.processors.response.ApplyDynamicSolrDateFormattingResponseProcessor
+facetNames: release_date
+month-format: yyyy-MM
+day-format: yyyy-MM-dd

@@ -1,0 +1,62 @@
+<layout:box styling="bg-paper-light center-content" ><search:platform var="platform" conf="platforms.fusion.data"></search:platform>
+
+<!-- Retrieve the main doc to display -->
+<search:query var="query" parameters="*" facets="" results-per-page="1">
+    <query:filter field="id" value="{{params.id}}"></query:filter>
+</search:query>
+
+<!-- Send query to platform and retrieve documents back -->
+<search:response var="response" platform="platform" query="query">
+    <widget:spinner></widget:spinner>
+</search:response>
+
+<helper:title title="{{(result | field:'title_t' | actualValue)}}"></helper:title>
+
+<!-- HEADER -->
+<layout:include file="views/partials/header.tpl.html" action="search" no-filter="true"></layout:include>
+
+<!-- CONTENT -->
+<layout:animate animation="animate-fadeInUp" on="response">
+    <layout:box styling="bg-paper">
+        <layout:grid >
+
+            <!-- Page Title -->
+            <layout:block>
+                <layout:box styling="bg-paper-light center-content">
+                    <h1>
+                        {{(response | result | field:'title_t' | actualValue)}}
+                    </h1>
+                </layout:box>
+            </layout:block>
+
+            <!-- Poster  -->
+            <layout:block sm="1-2" padding-left="1" padding-right="1" padding-top="1" >     
+                <layout:box styling="bg-paper-light center-content" >
+                    <img src="{{(response | result | field:'large_poster' | actualValue)}}" width="100%" style="object-fit: contain;max-height: 400px"/>
+                </layout:box>
+            </layout:block>
+
+            <!--  Info  -->
+            <layout:block sm="1-2" padding-left="1" padding-right="1" padding-top="1" styling="stretch-content" >
+                <search:result-list response="response">        
+                    <search:result>
+                        <layout:box styling="center-content bg-paper-light">
+                            <layout:block>
+                                 <search:field name="release_date" label="Release Date" styling="label-left" ></search:field>
+                            </layout:block>             
+                            <layout:block>
+                                <search:field name="genres_s" label="Genres" styling="label-left" ></search:field>
+                            </layout:block>
+                            <layout:block>
+                                <search:field name="overview_t" label="Overview" styling="label-left" ></search:field>
+                            </layout:block>
+                            <layout:block>
+                                <search:field name="url_t" urlField="url_t" label="IMDB: " styling="label-left" ></search:field>
+                            </layout:block> 
+                        </layout:box>
+                    </search:result>
+                </search:result-list>
+            </layout:block>
+        </layout:grid>
+    </layout:box>
+</layout:animate>

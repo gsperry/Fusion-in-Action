@@ -1,0 +1,11 @@
+# Replace YOUR_QUERY_PROFILE with the name of your search query profile
+query-profile: Research_Papers
+
+# Enable Social Module response processing - configured in conf/processors/response/social.conf
+# workflow: processors.response.social
+
+# CSV of facets to use in search, e.g. author_s,location_s.
+defaultFacets=
+
+# Define a mapping from the fields in your Fusion collection to a different information model or schema.
+aliases: aliases: title_t=title,summary_t=description,fetchedDate_dt=date_indexed,pdf_url_s=url,authors_ss=authors,categories_s=categories

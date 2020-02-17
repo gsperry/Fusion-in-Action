@@ -1,5 +1,5 @@
 curl -u admin:password1 -X POST -H 'content-type: application/json' -d '{
-  "id" : "research-papers",
+  "id" : "Research_Papers",
   "name" : "Research Papers",
   "description" : "Search and view published research papers",
   "dataUri" : "/admin/App-Tile-01-460x160.png",
@@ -7,4 +7,4 @@ curl -u admin:password1 -X POST -H 'content-type: application/json' -d '{
     "headerImageName" : "headerImage1",
     "tileColor" : "apps-red"
   }
-}' http://localhost:8764/api/apps
+}' http://fusion-host:6764/api/apps

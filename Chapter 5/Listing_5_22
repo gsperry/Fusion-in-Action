@@ -1,0 +1,1 @@
+<search:field name="title_t" styling="title" url="#/search/{{result.id}}" default-value="{{result.id}}"></search:field>

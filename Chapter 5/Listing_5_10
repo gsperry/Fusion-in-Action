@@ -1,0 +1,94 @@
+<layout:grid styling="header">
+
+    <!-- logo -->
+
+    <layout:block md="4-24" styling="hide-sm hide-xs" class="logo-wrapper">
+        <layout:box>
+            <layout:logo image="assets/logo.png"></layout:logo>
+        </layout:box>
+    </layout:block>
+
+    <layout:block xs="4-24" md="2-24">
+        <layout:box>
+            <search:offcanvas-toggle target="#sidebar"></search:offcanvas-toggle>
+        </layout:box>
+    </layout:block>
+
+    <!-- search -->
+    <layout:block xs="20-24" md="1-2">
+        <layout:box>
+            <!--if you enable the sidebar you may want to set social=false, social=false-->
+            <search:box placeholder="Find documents..." action="search" social="true">
+
+                <!-- Two options for query suggestions - pick one -->
+
+                <!-- 1. Query Suggestions - Terms -->
+                <!--<div>-->
+                <!--<query:suggestions completion-service="services.suggestions.terms" action="/search"></query:suggestions>-->
+                <!--</div>-->
+
+                <!-- Query Suggestions - Suggester -->
+                <div>
+                    <query:suggestions completion-service="services.suggestions.suggester" action="/search"></query:suggestions>
+                </div>
+
+                <!-- Instant Results -->
+                <div>
+                    <instant:result-list title="Suggested Results" platform="platform" class="instant">
+                        <search:result>
+                            <search:field name="title" label="" styling="label-inline" urlfield="url"></search:field>
+                        </search:result>
+                    </instant:result-list>
+                </div>
+
+            </search:box>
+        </layout:box>
+    </layout:block>
+
+    <layout:block md="6-24" styling="hide-sm hide-xs">
+        <layout:box class="utility">
+
+            <!--This section a custom button plus user-actions AS tag-->
+            <!--<div class="header-btns">-->
+            <!--    <span class="open-user-sidebar">-->
+            <!--        &lt;!&ndash;this is an icon next to the button&ndash;&gt;-->
+            <!--        &lt;!&ndash;<span class="icon-cog"></span>&ndash;&gt;-->
+            <!--        <span ng-click="sidebar = !sidebar">Saved Items</span>-->
+            <!--    </span>-->
+            <!--</div>-->
+            <!--<div class="user-wrapper">-->
+            <!--    <security:user-actions class="right"></security:user-actions>-->
+            <!--</div>-->
+
+            <!--This section is username that opens the sidebar-->
+            <div class="user-wrapper">
+                <p ng-click="sidebar = !sidebar" id="open-save"><span class="icon-user-o"></span> {{$parent.$parent.user.name}}</p>
+            </div>
+        </layout:box>
+    </layout:block>
+
+    <!--When unsing/uncommenting the sidebar, make sure to set social=false in your search:box tag-->
+    <layout:block class="user-save" ng-class="{'active' : sidebar}" click-outside="sidebar=false" outside-if-not="open-user-sidebar, user-wrapper">
+        <div class="close-sidebar">
+            <span class="icon-cancel close" ng-click="sidebar=false"></span>
+        </div>
+        <div class="section">
+            <h4><i class="icon-heart"></i> My Saved Searches</h4>
+            <collaborate:saved-query-list></collaborate:saved-query-list>
+        </div>
+        <div class="section">
+            <h4><i class="icon-bookmark"></i> My Saved Bookmarks</h4>
+            <collaborate:bookmark-list></collaborate:bookmark-list>
+        </div>
+    </layout:block>
+
+
+</layout:grid>
+
+<!--NAVBAR-->
+<!--<layout:grid id="navbar">-->
+<!--<layout:block>-->
+<!--<search:tabs response="response" tabs="dashboard=At a glance,search=Search"-->
+<!--styling="navbar" class="tk-stl-navbar"></search:tabs>-->
+<!--</layout:block>-->
+<!--</layout:grid>-->

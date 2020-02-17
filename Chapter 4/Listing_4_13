@@ -1,9 +1,1 @@
-curl -u admin:password1 -X POST -H 'Content-type: application/json' -d '{
-  "id" : "MovieLens",
-  "name" : "MovieLens",
-  "dataUri" : "/admin/App-Tile-09-460x160.png",
-  "properties" : {
-    "headerImageName" : "headerImage9",
-    "tileColor" : "apps-teal",
-    "previousCollectionId" : "MovieLens"
-  }},' http://localhost:8764/api/apps
+curl -u admin:password1 -H "content-type:application/java-archive" -X PUT --data-binary "@~/Downloads/postgresql-42.2.8.jar" http://fusion-host:6764/api/apps/MovieLens/blobs/movielens-driver?resourceType=driver:jdbc

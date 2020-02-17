@@ -1,0 +1,10 @@
+# Default config for all platforms defined in conf/platforms/fusion/
+
+# The Appkit class name to use for all platforms defined in this directory
+name: twigkit.search.fusion.Fusion
+
+timeOut: 30000
+resultIDField: id
+highlight: true
+defaultQuery: *:*
+workflow: processors.response.date-format

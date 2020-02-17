@@ -1,0 +1,1 @@
+curl -u admin:password1 -X PUT -H "content-type:application/octet-stream" --data-binary @data.csv http://fusion-host:6764/api/blobs/datafile?resourceType=file

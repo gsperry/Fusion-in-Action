@@ -1,0 +1,1 @@
+curl -u admin:password1 -X PUT -H 'Content-type:text/plain' -d '@solrconfig.xml' http://fusion-host:6764/api/collections/MovieLens/solr-config/solrconfig.xml?reload=true

@@ -1,0 +1,15 @@
+# Config for <query:suggestions>
+
+# The Platform to query - by default this uses conf/platforms/fusion/suggestions.conf
+source: platforms.fusion.suggestions
+
+# SolrSuggestionsParserService uses the Solr Suggestor Component: 
+# https://lucene.apache.org/solr/guide/7_5/suggester.html
+name: twigkit.search.solr.suggestions.SolrSuggestionsParserService
+
+# CSV of Solr Suggesters - you will need to configure these.
+# Fusion does not have a default Suggester
+suggester: movieSuggester
+
+# The label to show in the UI
+title: Suggestions
