@@ -1,0 +1,5 @@
+./setup_f5_gke.sh -c fusion-cluster \
+ -p my-gcp-progect \
+ -i n1-standard-4 \
+ --prometheus none \
+ --create demo
