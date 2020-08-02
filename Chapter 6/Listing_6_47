@@ -1,0 +1,1 @@
+curl -X PUT -u admin:password1 -H 'Content-type: application/octet-stream' --data-binary @auto.zip http://fusion-host/api/apps/analytics/blobs/auto.zip?resourceType=file

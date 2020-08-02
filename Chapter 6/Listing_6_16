@@ -1,0 +1,11 @@
+curl -u admin:password1 -X POST -H 'Content-type:application/json' -d '{
+  "id" : "crime",
+  "connector" : "lucid.fileupload",
+  "type" : "fileupload",
+  "pipeline" : "crime",
+  "parserId" : "analytics",
+  "properties" : {
+    "mediaType" : "application/octet-stream",
+    "collection" : "crime",
+    "fileId" : "CrimeData.csv"
+  }}' http://fusion-host:6764/api/apps/analytics/connectors/datasources

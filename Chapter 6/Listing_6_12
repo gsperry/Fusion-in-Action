@@ -1,0 +1,1 @@
+wget -O CrimeData.csv https://opendata.arcgis.com/datasets/f08294e5286141c293e9202fcd3e8b57_1.csv

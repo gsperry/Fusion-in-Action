@@ -1,0 +1,1 @@
+kubectl port-forward -n $NAMESPACE $(kubectl get pod -n $NAMESPACE --selector=app=zeppelin -o jsonpath='{.items...metadata.name}') 8080:8090

@@ -1,0 +1,16 @@
+curl -u admin:password1 -X POST -H 'Content-type:application/json' -d '{
+  "id" : "analytics",
+  "stages" : [ {
+    "type" : "search-fields",
+    "rows" : 0,
+    "start" : 0,
+    "queryFields" : [ ],
+    "returnFields" : [ "*", "score" ]
+  }, {
+    "type" : "facet",
+    "fieldFacets" : [ ],
+    "type" : "facet"
+  }, {
+    "type" : "solr-query",
+    "httpMethod" : "POST"
+  }]}' http://fusion-host:6764/api/apps/analytics/query-pipelines

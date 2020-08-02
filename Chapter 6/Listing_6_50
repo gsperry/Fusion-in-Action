@@ -1,0 +1,1 @@
+kubectl expose service sql-jdbc --port=8088 --target-port=8088 --name=sql-jdbc-external --type=LoadBalancer

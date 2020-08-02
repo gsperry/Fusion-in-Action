@@ -1,0 +1,6 @@
+curl -u admin:password1 -X POST -H "Content-type:application/json" -d '{
+"id":"311",
+"solrParams":{
+"numShards":3,
+"maxShardsPerNode":3
+}}' http://fusion-host:6764/api/apps/analytics/collections

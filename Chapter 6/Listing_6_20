@@ -1,0 +1,15 @@
+# Hostname of your Fusion server
+host: fusion-host
+
+# Port of your Fusion server
+port: 6764
+
+# Protocol of your Fusion server - e.g. http or https
+protocol: http
+
+# Optional: Fusion Authorisation mode - native, serviceaccount, or jwt.
+auth: serviceaccount
+
+# Service Account config
+userName: admin
+password: password1

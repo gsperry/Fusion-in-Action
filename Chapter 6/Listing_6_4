@@ -1,0 +1,19 @@
+curl -u admin:password1 -X POST -H 'Content-type:application/json' -d '{
+  "add-field":{ "name":"ts", "type":"pdate", "stored":true },
+  "add-field": { "name": "artist", "type": "string", "stored": true },
+  "add-field": { "name": "firstName", "type": "string", "stored": true },
+  "add-field": { "name": "lastName", "type": "string", "stored": true },
+  "add-field": { "name": "gender", "type": "string", "stored": true },
+  "add-field": { "name": "level", "type": "string", "stored": true },
+  "add-field": { "name": "length", "type": "pdouble", "stored": true  },
+  "add-field": { "name": "location", "type": "string", "stored": true  },
+  "add-field": { "name": "method", "type": "string", "stored": true  },
+  "add-field": { "name": "page", "type": "string", "stored": true  },
+  "add-field": { "name": "registration", "type": "pdate", "stored": true  },
+  "add-field": { "name": "song", "type": "string", "stored": true  },
+  "add-field": { "name": "state", "type": "string", "stored": true  },
+  "add-field": { "name": "status", "type": "pint", "stored": true  },
+  "add-field": { "name": "tag", "type": "text_general", "stored": true  },
+  "add-field": { "name": "userAgent", "type": "text_general", "stored": true  },
+  "add-field": { "name": "userId", "type": "string", "stored": true  }
+}' http://fusion-host:6764/api/solr/eventsim/schema

@@ -1,0 +1,1 @@
+kubectl cp ./hive-jdbc-shaded-2.1.1.jar $(kubectl get pod -n $NAMESPACE --selector=app=zeppelin -o jsonpath='{.items...metadata.name}'):/usr/zeppelin/lib/hive-jdbc-shaded-2.1.1.jar -c zeppelin

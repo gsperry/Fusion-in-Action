@@ -1,0 +1,22 @@
+curl -u admin:password1 -X POST -H 'Content-type:application/json' -d ' {
+  "id" : "eventsim",
+  "connector" : "lucid.web",
+  "type" : "web",
+  "pipeline" : "eventsim",
+  "parserId" : "analytics",
+  "properties" : {
+    "initial_mapping" : {
+      "mappings" : [ {
+        "source" : "length",
+        "operation" : "move",
+        "target" : "length"
+      } ],
+      "reservedFieldsMappingAllowed" : false,
+      "id" : "FromMap"
+    },
+    "maxItems" : 1,
+    "f.maxSizeBytes" : 41943040,
+    "collection" : "eventsim",
+    "startLinks" : [ "https://storage.googleapis.com/fusion-datasets/eventsim.json.zip" ]
+  }
+} ' http://fusion-host:6764/api/apps/analytics/connectors/datasources

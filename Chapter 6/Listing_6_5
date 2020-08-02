@@ -1,0 +1,14 @@
+curl -u admin:password1 -X POST -H 'Content-type: application/json' -d '{
+  "id" : "analytics",
+  "parserStages" : [ {
+    "type" : "archive"
+  }, {
+    "type" : "json",
+    "splitArrays" : true,
+    "listHandling" : "multivalued"
+  }, {
+    "type" : "csv"
+  }, {
+    "type" : "fallback",
+    "maxBytesToKeep" : 10485760
+  } ]}' http://fusion-host:6764/api/apps/analytics/parsers

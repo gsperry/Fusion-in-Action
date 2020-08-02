@@ -1,0 +1,9 @@
+curl -u admin:password1 -X POST -H 'Content-type:application/json' -d '{
+    "id" : "analytics",
+    "name" : "Analytics",
+    "dataUri" : "/admin/App-Tile-02-460x160.png",
+    "properties" : {
+      "headerImageName" : "headerImage2",
+      "tileColor" : "apps-orange"
+  }}' http://fusion-host:6764/api/apps?relatedObjects=false
+  

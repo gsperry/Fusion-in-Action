@@ -1,0 +1,15 @@
+curl -u admin:password1 -X PUT -H 'Content-type:application/json' -d '{
+  "id" : "crime",
+  "stages" : [ {
+    "type" : "javascript-index",
+    "script" : " function(doc) {\n  var value = \"\";\n  var heat = \"\";\n  var lat = \"\";\n  var long = \"\";\n  if (doc.hasField(\"LATITUDE\") && doc.hasField(\"LONGITUDE\")) {\n    lat = doc.getFirstFieldValue(\"LATITUDE\");\n    long = doc.getFirstFieldValue(\"LONGITUDE\")\n    value = lat + \",\" + long;\n    doc.addField(\"LOCATION_p\", value);\n    doc.addField(\"HEATMAP_s\", lat.substr(0,6) + \",\" + long.substr(0,7));\n  }\n  return doc;\n}"}, {
+    "type" : "solr-dynamic-field-name-mapping",
+    "duplicateSingleValuedFields" : false,
+    "fieldsToExclude" : [ ],
+    "advancedTextFieldsIndexing" : true,
+    "maxTextLengthForAdvancedIndexing" : 100
+  }, {
+    "type" : "solr-index",
+    "enforceSchema" : true,
+    "bufferDocsForSolr" : false
+  }]}' http://fusion-host:6764/api/apps/analytics/index-pipelines/crime

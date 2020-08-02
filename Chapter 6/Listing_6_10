@@ -1,0 +1,1 @@
+kubectl port-forward pods/f5-solr-0 8080:8983

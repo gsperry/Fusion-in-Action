@@ -1,0 +1,1 @@
+./setup_f5_gke.sh -p $PROJECT -c $CLUSTER -n $NAMESPACE --upgrade

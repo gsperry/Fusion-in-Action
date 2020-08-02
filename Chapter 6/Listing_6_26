@@ -1,0 +1,13 @@
+curl -u admin:password1 -X POST -H 'Content-type:application/json' -d ' {
+  "id" : "311",
+  "connector" : "lucid.web",
+  "type" : "web",
+  "pipeline" : "analytics",
+  "parserId" : "analytics",
+  "properties" : {
+    "maxItems" : 1,
+    "f.maxSizeBytes" : 41943040,
+    "collection" : "311",
+    "startLinks" : [ "https://storage.googleapis.com/fusion-datasets/311_data.csv.zip" ]
+  }
+} ' http://fusion-host:6764/api/apps/analytics/connectors/datasources

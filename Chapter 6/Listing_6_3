@@ -1,0 +1,6 @@
+curl -u admin:password1 -X PUT -H 'Content-type: application/json' -d '{
+  "enabled": true,
+  "params": {
+    "timestampFieldName": "ts"
+  }}' http://fusion-host:6764/api/collections/eventsim/features/partitionByTime
+  

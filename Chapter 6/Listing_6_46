@@ -1,0 +1,12 @@
+curl -u admin:password1 -X PUT -H "Content-type:application/json" -d '{
+    "projectId":"fusion",
+    "name":"auto",
+    "assetType":"table",
+    "description":"Automobile Defects",
+    "format":"solr",
+    "options":["collection -> auto", "exclude_fields -> _lw_*,_raw_content_", "solr.params -> sort=id asc"],
+    "cacheOnLoad":false, 
+    "id":"fusion.auto",
+    "additionalSettings":{
+        "virtualTableField":"doc_type_s"
+}}' http://fusion-host:6764/api/catalog/fusion/assets/auto

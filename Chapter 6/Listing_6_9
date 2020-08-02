@@ -1,0 +1,2 @@
+curl -u admin:password1 -X GET \
+http://fusion-host:6764/api/jobs/datasource:eventsim

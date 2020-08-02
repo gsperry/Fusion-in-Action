@@ -1,0 +1,13 @@
+curl -u admin:password1 -X POST -H 'Content-type:application/json' -d ' {
+  "id" : "auto",
+  "created" : "2020-06-21T19:40:28.733Z",
+  "modified" : "2020-06-21T19:40:28.733Z",
+  "connector" : "lucid.fileupload",
+  "type" : "fileupload",
+  "pipeline" : "analytics",
+  "parserId" : "analytics",
+  "properties" : {
+    "mediaType" : "application/octet-stream",
+    "collection" : "auto",
+    "fileId" : "auto.zip"
+  }}' http://fusion-host:6764/api/apps/analytics/connectors/datasources

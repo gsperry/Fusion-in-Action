@@ -1,0 +1,6 @@
+curl -u admin:password1 -X POST -H 'Content-type:application/json' -d '{
+  "id" : "crime",
+  "queryPipeline" : "analytics",
+  "collection" : "crime",
+  "searchHandler" : "select"
+}' http://fusion-host:6764/api/apps/analytics/query-profiles
